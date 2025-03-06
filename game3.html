@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма толтыру</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffafbd, #ffc3a0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 8px;
+            width: 90%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff6f61;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff3b2f;
+        }
+        .photo-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .photo-preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="music.mp3" type="https://soundcloud.com/young-mufasa-productions/love-on-me?si=fefa812044314cb89aa422946ce37369&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
+        Браузеріңіз аудионы қолдамайды.
+    </audio>
+    <div class="container">
+        <h2>Форманы толтырыңыз</h2>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <input type="text" id="first-name" name="first-name" placeholder="Сұлу қыздың есімі" required><br>
+            <input type="text" id="last-name" name="last-name" placeholder="Әрине тегі" required><br>
+            <input type="email" id="email" name="email" placeholder=" Гномиктің электрондық поштасы" required><br>
+            <input type="time" id="time" name="time" required><br>
+            
+            <div class="photo-upload">
+                <label for="photo">Фотосуретті жүктеңіз:</label>
+                <input type="file" id="photo" name="photo" accept="image/*" onchange="previewImage(event)">
+                <div class="photo-preview">
+                    <img id="preview" src="https://i.pinimg.com/736x/38/87/fe/3887fee20597b5cf07a80e497b8fead2.jpg" alt="Фотосурет">
+                </div>
+            </div>
+            
+            <button type="submit">Жіберу</button>
+        </form>
+    </div>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
